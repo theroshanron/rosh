@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roshan Chaudhary • Computer Basics Tutor & Portfolio</title>
+    <meta name="description"
+        content="Portfolio website for Roshan Chaudhary with full curriculum, booking, and contact." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #111827;
+            --muted: #94a3b8;
+            --text: #e5e7eb;
+            --brand: #22d3ee;
+            --accent: #a78bfa;
+            --ok: #34d399;
+            --danger: #fb7185;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .35)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #0b1224 0%, #0f172a 60%, #0b1224 100%);
+            color: var(--text);
+            font-family: Inter, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none
+        }
+
+        a:hover {
+            opacity: .9
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: rgba(11, 18, 36, .8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f2937
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            letter-spacing: .3px
+        }
+
+        .brand i {
+            color: var(--accent)
+        }
+
+        .menu {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .menu a {
+            font-size: .95rem;
+            color: #d1d5db
+        }
+
+        .menu a.btn {
+            padding: 8px 12px;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: #0b1224
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px
+        }
+
+        .socials a {
+            color: #cbd5e1
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 22px
+        }
+
+        .hero {
+            padding: 56px 0 24px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 28px;
+            align-items: center
+        }
+
+        .card {
+            background: linear-gradient(180deg, #0f172a, #0b1224);
+            border: 1px solid #1f2937;
+            border-radius: 18px;
+            box-shadow: var(--shadow)
+        }
+
+        .card.pad {
+            padding: 22px
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: #0b1224;
+            border: 1px solid #1f2937;
+            color: #cbd5e1;
+            font-size: .8rem
+        }
+
+        .cta {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #0b1224;
+            color: #e5e7eb
+        }
+
+        .btn.primary {
+            border-color: transparent;
+            background: linear-gradient(90deg, var(--brand), var(--accent));
+            color: #0b1224;
+            font-weight: 700
+        }
+
+        section {
+            padding: 34px 0
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 1.6rem
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px
+        }
+
+        .three {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: #1f2937
+        }
+
+        .t-item {
+            position: relative;
+            margin: 12px 0;
+            padding: 12px 14px;
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            background: #0b1224
+        }
+
+        .t-item::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 16px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--brand), var(--accent))
+        }
+
+        .t-item small {
+            color: #94a3b8
+        }
+
+        details.project {
+            border: 1px solid #1f2937;
+            border-radius: 14px;
+            background: #0b1224;
+            padding: 14px
+        }
+
+        details.project+details.project {
+            margin-top: 12px
+        }
+
+        details.project summary {
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .accordion details {
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            background: #0b1224;
+            margin: 12px 0
+        }
+
+        .accordion summary {
+            cursor: pointer;
+            padding: 14px 16px;
+            font-weight: 600
+        }
+
+        .accordion .content {
+            padding: 0 16px 16px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px
+        }
+
+        th,
+        td {
+            border: 1px solid #1f2937;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top
+        }
+
+        th {
+            background: #0f172a
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #0b1224;
+            border: 1px solid #1f2937;
+            color: #cbd5e1;
+            font-size: .75rem
+        }
+
+        .booking iframe {
+            width: 100%;
+            min-height: 520px;
+            border: 0;
+            border-radius: 14px
+        }
+
+        .footer {
+            border-top: 1px solid #1f2937;
+            padding: 20px 0;
+            margin-top: 24px
+        }
+
+        @media (max-width:950px) {
+            .hero-grid {
+                grid-template-columns: 1fr
+            }
+
+            .cols,
+            .three {
+                grid-template-columns: 1fr
+            }
+
+            .menu {
+                display: none
+            }
+
+            .hamburger {
+                display: block
+            }
+
+            #mobileMenu {
+                display: none;
+                position: absolute;
+                inset: 50px 10px auto 10px;
+                background: #0b1224;
+                border: 1px solid #1f2937;
+                border-radius: 14px;
+                padding: 12px
+            }
+
+            #mobileMenu a {
+                display: block;
+                padding: 10px 12px;
+                border-radius: 10px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <div class="brand"><i class="fa-solid fa-graduation-cap"></i> <span>Roshan Chaudhary • Computer Basics
+                    Tutor</span></div>
+            <nav class="menu" aria-label="Primary">
+                <a href="#about">About Me</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#summary">Summary</a>
+                <a href="#projects">Projects</a>
+                <a href="#curriculum">Curriculum</a>
+                <a class="btn" href="#booking">Book Your Slot</a>
+                <a class="btn" href="https://meet.google.com/owi-nsdc-ric" target="_blank" rel="noopener">Google
+                    Meet</a>
+                <a class="btn" href="https://www.buymeacoffee.com/theroshanron" target="_blank" rel="noopener"><i
+                        class="fa-solid fa-mug-hot"></i> Buy Me a Coffee</a>
+                <span class="socials" aria-label="Social Links">
+                    <a href="https://www.linkedin.com/in/roshanchaudhary/" target="_blank" aria-label="LinkedIn"
+                        rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://instagram.com/theroshanron" target="_blank" aria-label="Instagram"
+                        rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/theroshanron" target="_blank" aria-label="Twitter" rel="noopener"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://wa.me/919958262209" target="_blank" aria-label="WhatsApp" rel="noopener"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                </span>
+            </nav>
+            <button class="hamburger" aria-label="Open Menu" onclick="toggleMobile()"><i
+                    class="fa-solid fa-bars"></i></button>
+        </div>
+        <div id="mobileMenu" class="container">
+            <a href="#about" onclick="toggleMobile()">About Me</a>
+            <a href="#timeline" onclick="toggleMobile()">Timeline</a>
+            <a href="#summary" onclick="toggleMobile()">Summary</a>
+            <a href="#projects" onclick="toggleMobile()">Projects</a>
+            <a href="#curriculum" onclick="toggleMobile()">Curriculum</a>
+            <a href="#booking" onclick="toggleMobile()">Book Your Slot</a>
+            <a href="https://meet.google.com/owi-nsdc-ric" target="_blank" rel="noopener"
+                onclick="toggleMobile()">Google Meet</a>
+            <a href="https://www.buymeacoffee.com/theroshanron" target="_blank" rel="noopener"
+                onclick="toggleMobile()">Buy Me a Coffee</a>
+            <div style="display:flex;gap:12px;margin:10px 0 0 6px">
+                <a href="https://www.linkedin.com/in/roshanchaudhary/" target="_blank" aria-label="LinkedIn"
+                    rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/theroshanron" target="_blank" aria-label="Instagram" rel="noopener"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/theroshanron" target="_blank" aria-label="Twitter" rel="noopener"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://wa.me/919958262209" target="_blank" aria-label="WhatsApp" rel="noopener"><i
+                        class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="card pad">
+                    <span class="tag">Beginner-Friendly • Hands-on • 30 mins/class • Mon/Tue/Fri</span>
+                    <h1 style="margin:12px 0 8px; font-size:2.1rem">Computer Basics for Adult Beginners</h1>
+                    <p class="muted">Step-by-step classes to master laptop basics, safe browsing, Gmail, Google
+                        Docs/Sheets, video calls, and cyber hygiene. Built for confidence and real-life use.</p>
+                    <div class="cta">
+                        <a class="btn primary" href="#booking"><i class="fa-regular fa-calendar-check"></i> Book a Free
+                            Demo</a>
+                        <a class="btn" href="#curriculum"><i class="fa-solid fa-list-check"></i> See Curriculum</a>
+                    </div>
+                </div>
+                <div class="card pad">
+                    <h3 style="margin:0 0 8px">Quick Facts</h3>
+                    <ul class="muted" style="margin:0 0 6px 18px">
+                        <li>Schedule: Monday, Tuesday, Friday (30 mins)</li>
+                        <li>Duration: ~12 weeks (36 classes)</li>
+                        <li>Tools: Windows laptop + Google account</li>
+                        <li>Support: WhatsApp/Email help between classes</li>
+                    </ul>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+                        <span class="badge"><i class="fa-solid fa-shield-halved"></i> Safe Browsing</span>
+                        <span class="badge"><i class="fa-solid fa-envelope"></i> Gmail Basics</span>
+                        <span class="badge"><i class="fa-solid fa-file-word"></i> Google Docs</span>
+                        <span class="badge"><i class="fa-solid fa-table"></i> Google Sheets</span>
+                        <span class="badge"><i class="fa-solid fa-video"></i> Google Meet</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Resume-like -->
+        <section id="about">
+            <div class="container cols">
+                <div class="card pad">
+                    <h2>About Me</h2>
+                    <p class="muted">I’m <strong>Roshan Chaudhary</strong>, an Ad‑tech / Mar‑tech solution consultant
+                        with nearly eight years of experience. I currently serve as a <strong>Senior Technical Solution
+                            Engineer</strong> (Tesco Retail Media) at <strong>dunnhumby</strong>. I’m pursuing my
+                        <strong>EPGP MBA</strong> at <strong>IIM Kozhikode</strong> and hold certifications including
+                        <em>AppsFlyer Essentials</em>, <em>Google Analytics</em>, <em>Google Tag Manager
+                            Fundamentals</em>, and <em>Criteo Retail Media</em>. My technical toolkit spans
+                        <strong>Python</strong>, <strong>JavaScript</strong>, <strong>REST APIs</strong>,
+                        <strong>automation</strong>, and <strong>GTM</strong>. I coach adult beginners with patient,
+                        hands‑on lessons focused on real tasks and safe online habits.</p>
+
+                    <div class="three" style="margin-top:10px">
+                        <div class="card pad">
+                            <h3 style="margin-top:0">Experience Timeline</h3>
+                            <div class="timeline">
+                                <div class="t-item"><strong>Senior Technical Solution Engineer —
+                                        dunnhumby</strong><br><small>2021–2023, 2025–Present</small></div>
+                                <div class="t-item"><strong>Technical Account Manager — RTB
+                                        House</strong><br><small>2023–2025</small></div>
+                                <div class="t-item"><strong>Senior Implementation Specialist —
+                                        Taboola</strong><br><small>2019–2021</small></div>
+                                <div class="t-item"><strong>Technical Support Advisor II —
+                                        Concentrix</strong><br><small>2018–2019</small></div>
+                                <div class="t-item"><strong>Early roles</strong> — AuthBridge, Globus Eight, Cyber Peace
+                                    Foundation</div>
+                            </div>
+                        </div>
+                        <div class="card pad">
+                            <h3 style="margin-top:0">Skills & Tools</h3>
+                            <div style="display:flex;flex-wrap:wrap;gap:8px">
+                                <span class="badge">Python</span>
+                                <span class="badge">JavaScript</span>
+                                <span class="badge">REST APIs</span>
+                                <span class="badge">Automation</span>
+                                <span class="badge">Quality Assurance</span>
+                                <span class="badge">Google Tag Manager</span>
+                                <span class="badge">Product Support</span>
+                            </div>
+                            <p class="muted" style="margin-top:10px">Languages: English, Hindi • Certifications & Honors
+                                include Academic Excellence, Employee of the Month, and more.</p>
+                        </div>
+                        <div class="card pad">
+                            <h3 style="margin-top:0">Volunteering</h3>
+                            <p class="muted"><strong>Team Captain, The Earth Saviours Foundation</strong> — Led
+                                “Taboolathon: Walk for Wellbeing” fund‑raiser (2020).</p>
+                        </div>
+                    </div>
+
+                    <div class="card pad" style="margin-top:12px;background:#0b1224">
+                        <h3 style="margin-top:0"><i class="fa-solid fa-flask"></i> Project — Academic Calendar Exporter
+                        </h3>
+                        <p class="muted">A Flask-based web app that converts academic schedules (.xlsx) into clean
+                            <code>.ics</code> calendars for Google Calendar and others. It supports subject selection,
+                            uses unique UIDs to prevent duplicates on re-import, and produces smooth updates.</p>
+                        <ul class="muted" style="margin-left:18px">
+                            <li>Excel Upload with predefined headers</li>
+                            <li>Event selection for specific courses/sessions</li>
+                            <li>UID-based duplicate prevention</li>
+                            <li>Google Calendar compatible <code>.ics</code> output</li>
+                            <li>Simple, user-friendly interface</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card pad">
+                    <h2>Summary</h2>
+                    <ul class="muted" style="margin:0 0 0 18px">
+                        <li>One-on-one or small group classes</li>
+                        <li>Beginner-first pacing (no jargon)</li>
+                        <li>Step-by-step worksheets & mini homework</li>
+                        <li>Goal: Independence in 12 weeks</li>
+                    </ul>
+                    <div style="margin-top:12px">
+                        <a class="btn primary" href="#booking"><i class="fa-regular fa-calendar-check"></i> Book a Free
+                            Demo</a>
+                        <a class="btn" href="https://meet.google.com/owi-nsdc-ric" target="_blank" rel="noopener"><i
+                                class="fa-solid fa-video"></i> Join on Google Meet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline card separate for SEO anchor -->
+        <section id="timeline">
+            <div class="container card pad">
+                <h2>Timeline of Experience</h2>
+                <div class="timeline">
+                    <div class="t-item"><strong>Senior Technical Solution Engineer —
+                            dunnhumby</strong><br><small>2021–2023, 2025–Present</small></div>
+                    <div class="t-item"><strong>Technical Account Manager — RTB
+                            House</strong><br><small>2023–2025</small></div>
+                    <div class="t-item"><strong>Senior Implementation Specialist —
+                            Taboola</strong><br><small>2019–2021</small></div>
+                    <div class="t-item"><strong>Technical Support Advisor II —
+                            Concentrix</strong><br><small>2018–2019</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="container">
+                <h2>Projects / Mini-Assignments</h2>
+                <p class="muted">Click to expand—these are the hands-on artifacts learners create.</p>
+                <details class="project">
+                    <summary><i class="fa-solid fa-folder-open"></i> Organized Documents & Photos (Week 4)</summary>
+                    <div style="margin-top:10px" class="muted">Create a clean folder structure (Documents, Pictures,
+                        Bills) and practice copy/move/rename, plus safe USB eject.</div>
+                </details>
+                <details class="project">
+                    <summary><i class="fa-solid fa-file-lines"></i> A Simple Letter in Google Docs (Week 7)</summary>
+                    <div style="margin-top:10px" class="muted">Type and format a one-page letter: headings,
+                        bold/italics, bullet lists, and export to PDF.</div>
+                </details>
+                <details class="project">
+                    <summary><i class="fa-solid fa-table"></i> Monthly Budget Sheet (Week 8)</summary>
+                    <div style="margin-top:10px" class="muted">Use SUM and AVERAGE to track expenses; sort and filter a
+                        simple table.</div>
+                </details>
+                <details class="project">
+                    <summary><i class="fa-solid fa-display"></i> Present & Share (Weeks 9–10)</summary>
+                    <div style="margin-top:10px" class="muted">Create 3–5 slides and present them on Google Meet with
+                        screen share.</div>
+                </details>
+            </div>
+        </section>
+
+        <!-- Full Curriculum (same as earlier, condensed for brevity) -->
+        <section id="curriculum">
+            <div class="container">
+                <div class="card pad">
+                    <h2>Complete Course Curriculum (12 Weeks • 36 Classes)</h2>
+                    <p class="muted">Schedule: <strong>Mondays, Tuesdays, Fridays</strong> • <strong>30 minutes</strong>
+                        per session. Each class uses: 3‑min warm‑up → 10‑min demo → 12‑min guided practice → 5‑min recap
+                        & homework.</p>
+
+                    <!-- Month 1 Summary -->
+                    <div class="card pad" style="margin:16px 0;background:#0b1224">
+                        <h3>Month 1 Summary (Weeks 1–4)</h3>
+                        <ul class="muted" style="margin:0 0 0 18px">
+                            <li>Comfort with mouse & keyboard; basic shortcuts</li>
+                            <li>Windows basics: Start menu, taskbar, settings</li>
+                            <li>File & folder skills: create, name, move, copy, delete, restore</li>
+                            <li>Use File Explorer & USB safely</li>
+                        </ul>
+                    </div>
+
+                    <div class="accordion">
+                        <details open>
+                            <summary>Week 1 — Getting Started: What is a Computer? Desktop Tour & Input Basics</summary>
+                            <div class="content">
+                                <p class="muted"><strong>Weekly Focus:</strong> Concept of hardware vs software, turning
+                                    a laptop on/off safely, desktop basics, mouse & keyboard introduction.</p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework (5–10 min)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Understand computer parts & OS; learn power on/off; tour the desktop
+                                                (icons, taskbar, Start menu).</td>
+                                            <td>Identify ports, power button; open Start menu; pin an app to taskbar.
+                                            </td>
+                                            <td>Shut down & restart once; find and open Calculator from Start.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Mouse basics: single/double/right-click; drag & drop. Keyboard layout
+                                                awareness.</td>
+                                            <td>Practice clicks on desktop icons; use touchpad gestures; type your name
+                                                in Notepad.</td>
+                                            <td>5 minutes of typing practice.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Window management: open/close/minimize; switch apps; volume & Wi‑Fi
+                                                basics.</td>
+                                            <td>Open two apps and Alt+Tab between them; connect/disconnect Wi‑Fi demo.
+                                            </td>
+                                            <td>Change desktop wallpaper.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 2 — Typing & Navigation: Text Selection, Copy/Paste, Essential Shortcuts
+                            </summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Typing posture; home row; numbers & symbols.</td>
+                                            <td>Type a short paragraph; practice Backspace/Delete.</td>
+                                            <td>Type 5 lines about your day; save as <em>typing_practice.txt</em>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Select, copy, cut, paste; undo/redo.</td>
+                                            <td>Copy a sentence between Notepad files; Ctrl+Z/Ctrl+Y practice.</td>
+                                            <td>Re-type and format a given sentence.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Shortcuts & screenshots.</td>
+                                            <td>Take a screenshot and save to Pictures.</td>
+                                            <td>Memorize 5 shortcuts.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 3 — Windows Basics: Settings, Apps (Install/Uninstall), Updates</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Settings tour: Wi‑Fi, Bluetooth, time/date, display, sound.</td>
+                                            <td>Change sound & time format; connect Wi‑Fi.</td>
+                                            <td>Switch light/dark mode.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Install via Microsoft Store; pin/unpin; uninstall safely.</td>
+                                            <td>Install Sticky Notes and uninstall it.</td>
+                                            <td>Create a Start group with favorite apps.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Windows Update; battery & power settings.</td>
+                                            <td>Check updates; set screen timeout; learn Sleep vs Hibernate.</td>
+                                            <td>Apply a custom power plan.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 4 — Files & Folders: Explorer, Organization, USB & Downloads</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Explorer tour: address bar, nav pane, views.</td>
+                                            <td>Create Documents/Letters, Pictures/Family, Bills.</td>
+                                            <td>Change view & sort by date.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Create/rename/move/copy/delete; Recycle Bin & restore.</td>
+                                            <td>Copy photos; restore a deleted test file.</td>
+                                            <td>Rename 5 files with clear names.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Downloads tips; USB save/eject; file types.</td>
+                                            <td>Download a PDF; move to Documents; safely eject USB.</td>
+                                            <td>Screenshot your final folder structure.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- Month 2 Summary -->
+                    <div class="card pad" style="margin:18px 0;background:#0b1224">
+                        <h3>Month 2 Summary (Weeks 5–8)</h3>
+                        <ul class="muted" style="margin:0 0 0 18px">
+                            <li>Browser basics, search, tabs, bookmarks</li>
+                            <li>Gmail account & etiquette, attachments, labels/filters</li>
+                            <li>Google Drive for storage & sharing</li>
+                            <li>Docs & Sheets fundamentals</li>
+                        </ul>
+                    </div>
+
+                    <div class="accordion">
+                        <details>
+                            <summary>Week 5 — Internet Basics: Chrome, Search, Bookmarks, Safer Browsing</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Chrome tour; tabs; restore closed tab.</td>
+                                            <td>Open 3 sites; Ctrl+Shift+T to restore.</td>
+                                            <td>Bookmark 3 favourite sites.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Effective searching & results scanning.</td>
+                                            <td>Search for "best free typing practice"; open results in new tabs.</td>
+                                            <td>Download a sample file and find it in Downloads.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>HTTPS/padlock; pop‑ups; privacy basics.</td>
+                                            <td>Check a URL for spelling; clear cache.</td>
+                                            <td>Read one page on phishing basics.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 6 — Email & Communication: Gmail Account, Attachments, Etiquette</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Create Google account; Gmail tour.</td>
+                                            <td>Send a test email to tutor; star it.</td>
+                                            <td>Reply to tutor politely.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Compose with subject/formatting; CC/BCC; attachments.</td>
+                                            <td>Attach a PDF from Documents and send.</td>
+                                            <td>Create label "Course" and move mails.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Search; filters; signature; undo send.</td>
+                                            <td>Make a filter to auto-label tutor emails.</td>
+                                            <td>Write a reschedule request.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 7 — Google Drive & Docs: Cloud Storage, Formatting, Sharing</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Drive tour; upload files/folders; structure.</td>
+                                            <td>Make Course>Docs and Course>Sheets folders.</td>
+                                            <td>Star the main course folder.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Docs formatting: headings, bold/italic, bullets.</td>
+                                            <td>Write and format a one-page letter.</td>
+                                            <td>Export to PDF and save to Drive + local.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Share (Viewer/Commenter/Editor); comments.</td>
+                                            <td>Share your letter with tutor; add a comment.</td>
+                                            <td>Rename doc with date suffix.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 8 — Google Sheets: Data Entry, Simple Formulas, Sort/Filter</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Create a Sheet; format numbers & currency.</td>
+                                            <td>Make a small expense table.</td>
+                                            <td>Auto-fill dates; adjust column widths.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Formulas: SUM, AVERAGE, MIN, MAX.</td>
+                                            <td>Compute totals & averages.</td>
+                                            <td>Add rows and recompute.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Sort, Filter, Freeze top row; basic chart.</td>
+                                            <td>Sort by Amount; filter; insert a bar chart.</td>
+                                            <td>Share as Viewer.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- Month 3 Summary -->
+                    <div class="card pad" style="margin:18px 0;background:#0b1224">
+                        <h3>Month 3 Summary (Weeks 9–12)</h3>
+                        <ul class="muted" style="margin:0 0 0 18px">
+                            <li>Create simple presentations (Slides) and present confidently</li>
+                            <li>Join/schedule Google Meet; use mic/cam/chat; share screen</li>
+                            <li>Recognize phishing & scams; use strong passwords and 2‑Step Verification</li>
+                            <li>Capstone: Create a Doc + Sheet + Slides and email them; present on Meet</li>
+                        </ul>
+                    </div>
+
+                    <div class="accordion">
+                        <details>
+                            <summary>Week 9 — Google Slides: Themes, Layouts, Images & Presenting</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Create Slides; choose theme; title/content slides.</td>
+                                            <td>Make 3 slides about a hobby.</td>
+                                            <td>Reorder slides; add speaker notes.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Insert images/shapes; align & distribute; transitions.</td>
+                                            <td>Add 2 images; align neatly.</td>
+                                            <td>Practice your talk.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Present mode; export PDF; share link.</td>
+                                            <td>Present to tutor for 2 minutes.</td>
+                                            <td>Save PDF to Drive.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 10 — Google Meet: Join, Schedule, Share Screen</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Join via link; mic/cam; background; chat.</td>
+                                            <td>Join a demo Meet; toggle mic/cam; send a chat.</td>
+                                            <td>Test mic/cam before next class.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Schedule from Calendar; invite someone.</td>
+                                            <td>Create a 15‑min event and add tutor.</td>
+                                            <td>Add a reminder notification.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Share screen (entire screen/window/tab).</td>
+                                            <td>Share Week 9 Slides for 2 minutes.</td>
+                                            <td>Note 3 Meet etiquette rules.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 11 — Online Safety: Passwords, 2FA, Phishing, Backups</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Strong passwords; password managers (concept); enable Google 2FA.</td>
+                                            <td>Turn on 2‑Step Verification.</td>
+                                            <td>Update recovery phone/email.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Spot phishing emails & fake websites.</td>
+                                            <td>Identify red flags from samples.</td>
+                                            <td>Write 3 signs of suspicious email.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Privacy check-up; Windows Defender; backups.</td>
+                                            <td>Run a quick scan; review privacy settings.</td>
+                                            <td>Back up a key folder to Drive.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>Week 12 — Capstone & Review: Integrate Skills, Assessment, Next Steps</summary>
+                            <div class="content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Day</th>
+                                            <th>Class Objective</th>
+                                            <th>Hands-on</th>
+                                            <th>Homework</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mon</td>
+                                            <td>Capstone kickoff & checklist.</td>
+                                            <td>Create: 1 Doc (letter), 1 Sheet (budget), 1 Slides (3–5 slides).</td>
+                                            <td>Finish draft of all 3 files.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tue</td>
+                                            <td>Email & sharing practice.</td>
+                                            <td>Email the 3 files (PDF/links) to tutor; set permissions.</td>
+                                            <td>Rehearse a 2–3 minute talk.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fri</td>
+                                            <td>Final presentation & review.</td>
+                                            <td>Present on Meet with screen share; feedback.</td>
+                                            <td>Plan next learning goals.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- Demo Class -->
+                    <div class="card pad" style="margin-top:16px;background:#0b1224">
+                        <h3>30‑Minute Demo Class (Confidence‑Boosting Intro)</h3>
+                        <ol class="muted" style="margin:0 0 0 18px">
+                            <li><strong>Icebreaker (0–3 min):</strong> What do you want to do with a computer? (email,
+                                bills, photos)</li>
+                            <li><strong>What is a computer? (3–7 min):</strong> Hardware vs software; keyboard/touchpad;
+                                ports.</li>
+                            <li><strong>Mouse & typing basics (7–12 min):</strong> Click/double/right‑click; type your
+                                name in Notepad.</li>
+                            <li><strong>Hands‑on task (12–20 min):</strong> File Explorer → create folder
+                                <em>Practice</em> → new text file → rename → delete & restore.</li>
+                            <li><strong>Internet tour (20–26 min):</strong> Chrome → URL vs search → search "Taj Mahal"
+                                → open result → bookmark.</li>
+                            <li><strong>Wrap‑up (26–30 min):</strong> Homework: create <em>My First Folder</em>, add
+                                <em>hello.txt</em>, bookmark <em>google.com</em>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking">
+            <div class="container">
+                <div class="card pad booking">
+                    <h2>Book Your Slot</h2>
+                    <p class="muted">Pick a time that works for you. If the calendar doesn’t load, tap the button below.
+                    </p>
+                    <iframe title="Book a session"
+                        src="https://calendly.com/theroshanron/30min?hide_event_type_details=1&hide_gdpr_banner=1"></iframe>
+                    <div class="cta">
+                        <a class="btn primary" href="https://calendly.com/theroshanron/30min" target="_blank"
+                            rel="noopener"><i class="fa-regular fa-calendar"></i> Open Booking Page</a>
+                        <a class="btn" href="https://meet.google.com/owi-nsdc-ric" target="_blank" rel="noopener"><i
+                                class="fa-solid fa-video"></i> Join on Google Meet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container cols">
+            <div>
+                <h3>Contact Us</h3>
+                <p class="muted">Email: <a href="mailto:95roshan1@gmail.com">95roshan1@gmail.com</a><br>Phone/WhatsApp:
+                    <a href="tel:+919958262209">+91 99582 62209</a></p>
+                <div class="socials" aria-label="Social Links">
+                    <a href="https://www.linkedin.com/in/roshanchaudhary/" target="_blank" aria-label="LinkedIn"
+                        rel="noopener"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://instagram.com/theroshanron" target="_blank" aria-label="Instagram"
+                        rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/theroshanron" target="_blank" aria-label="Twitter" rel="noopener"><i
+                            class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://wa.me/919958262209" target="_blank" aria-label="WhatsApp" rel="noopener"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="card pad">
+                <h3>Quick Links</h3>
+                <ul class="muted" style="margin:0 0 0 18px">
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#booking">Book a Session</a></li>
+                    <li><a href="https://www.buymeacoffee.com/theroshanron" target="_blank" rel="noopener">Buy Me a
+                            Coffee</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="text-align:center;margin-top:16px;color:#94a3b8">© <span id="year"></span> Roshan
+            Chaudhary — All rights reserved.</div>
+    </footer>
+
+    <script>
+        function toggleMobile() {
+            const m = document.getElementById('mobileMenu');
+            m.style.display = (m.style.display === 'block') ? 'none' : 'block';
+        }
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
